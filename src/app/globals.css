@@ -24,11 +24,11 @@ a{
     margin: auto;
     padding-left: 50px;
     padding-right: 50px;
-    min-height: 100vh;
+    height: 99vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    
 }
 @media(max-width: 1536px){
     .container{
