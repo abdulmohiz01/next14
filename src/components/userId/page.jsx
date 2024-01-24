@@ -17,14 +17,15 @@ const UserId = async ({ userId }) => {
     // const  slug  = userId;
     // console.log(slug)
     // const user = await getData(userId);
-    
+    console.log(userId)
     const user = await getUser(userId);
+    console.log(user)
 
 
     return (
         <div className={styles.detailText}>
             <span className={styles.detailTitle}>Author</span>
-            <span className={styles.detailValue}>{user.name}</span>
+            {/* <span className={styles.detailValue}>{user.}</span> */}
         </div>
     )
 }

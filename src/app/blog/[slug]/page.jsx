@@ -16,19 +16,19 @@ import { getPost } from "@/lib/data";
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
   // const post = await getData(slug);
-  // console.log(post.id)
+   console.log(params)
   const post = await getPost(slug);
   
 
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
-        <Image src="https://images.pexels.com/photos/9162803/pexels-photo-9162803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" fill className={styles.img} />
+        <Image src={post.img} alt="" fill className={styles.img} />
       </div>
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post?.title}</h1>
         <div className={styles.detail}>
-          <Image src="https://images.pexels.com/photos/9162803/pexels-photo-9162803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width={50} height={50} className={styles.avatar} />
+          <Image src={post.img} alt="" width={50} height={50} className={styles.avatar} />
           {post &&
             <Suspense fallback={<div>Loading...</div>}>
               <UserId userId={post.id} />
@@ -39,7 +39,7 @@ const SinglePostPage = async ({ params }) => {
           </div>
         </div>
         <div className={styles.content}>
-          {post.body}
+          {post.description}
         </div>
       </div>
     </div>

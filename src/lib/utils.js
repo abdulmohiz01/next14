@@ -1,5 +1,7 @@
 const {default: mongoose} = require("mongoose")
-const connection = {};
+const connection = {
+
+};
 
 const connectToDb = async () => {
 
@@ -16,3 +18,5 @@ const connectToDb = async () => {
         throw new Error(error);
     }
 }
+
+module.exports = connectToDb;
