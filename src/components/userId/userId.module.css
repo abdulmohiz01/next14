@@ -1,14 +1,25 @@
-.detailTitle{
-    color: gray;
-    font-weight: bold;
+.container{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .avatar{
+    border-radius: 50%;
+    object-fit: cover;
 }
-
-.detailText {
+  
+  .texts{
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.detailValue {
-font-weight: 500;
-}
+  }
+  
+  .title{
+    color: gray;
+    font-weight: bold;
+  }
+  
+  .username{
+    font-weight: 500;
+  }

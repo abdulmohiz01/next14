@@ -16,30 +16,32 @@ import { getPost } from "@/lib/data";
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
   // const post = await getData(slug);
-   console.log(params)
+  // console.log(slug)
   const post = await getPost(slug);
-  
+  // console.log(post.get('description'))     //
+
 
   return (
     <div className={styles.container}>
-      <div className={styles.imgContainer}>
-        <Image src={post.img} alt="" fill className={styles.img} />
-      </div>
+      {post.img &&
+        <div className={styles.imgContainer}>
+          <Image src={post.img} alt="" fill className={styles.img} />
+        </div>}
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post?.title}</h1>
         <div className={styles.detail}>
-          <Image src={post.img} alt="" width={50} height={50} className={styles.avatar} />
+          {/* <Image src={post.img} alt="" width={50} height={50} className={styles.avatar} /> */}
           {post &&
             <Suspense fallback={<div>Loading...</div>}>
-              <UserId userId={post.id} />
+              <UserId userId={post.userId} />
             </Suspense>}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
-            <span className={styles.detailValue}>21/01/2024</span>
+            <span className={styles.detailValue}>{post.createdAt.toString().slice(0, 16)}</span>
           </div>
         </div>
         <div className={styles.content}>
-          {post.description}
+          {post.get('description')}
         </div>
       </div>
     </div>
