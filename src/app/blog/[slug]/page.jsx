@@ -5,19 +5,28 @@ import { Suspense } from "react";
 import { getPost } from "@/lib/data";
 
 
-// const getData = async (slug) => {
-//   const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`); //, {cache:"no-store"}  "used when the data is constantly changing in database, and by default, its caching data"
-//   if (!response.ok) {
-//     throw new Error("Something went wrong");
-//   }
-//   return response.json();
-// };
+const getData = async (slug) => {
+  const response = await fetch(`http://localhost:3000/api/blog/${slug}`); //, {cache:"no-store"}  "used when the data is constantly changing in database, and by default, its caching data"
+  if (!response.ok) {
+    throw new Error("Something went wrong");
+  }
+  return response.json();
+};
+export const generateMetadata = async ({params})=> {
+  const { slug } = params;
+  const post = await getPost(slug);
+  return {
+    title: post.title,
+    description: post.get('description')
+  }
+
+}
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
-  // const post = await getData(slug);
+  const post = await getData(slug);
   // console.log(slug)
-  const post = await getPost(slug);
+  // const post = await getPost(slug);
   // console.log(post.get('description'))     //
 
 
@@ -41,7 +50,7 @@ const SinglePostPage = async ({ params }) => {
           </div>
         </div>
         <div className={styles.content}>
-          {post.get('description')}
+          {post.description}     {/*  post.get('description') */}
         </div>
       </div>
     </div>

@@ -23,11 +23,11 @@ export const getPosts = async () => {
         // Log the description of each post
         posts.forEach(post => {
             const description = post.get('description');
-            if (description) {
-                console.log(description);
-            } else {
-                console.log("Description not available");
-            }
+            // if (description) {
+            //     console.log(description);
+            // } else {
+            //     console.log("Description not available");
+            // }
         });
 
         return posts;
